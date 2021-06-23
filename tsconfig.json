@@ -18,9 +18,40 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "suppressImplicitAnyIndexErrors": true,
+    "plugins": [
+      {
+        "name": "typescript-plugin-css-modules"
+      }
+    ],
+    "baseUrl": "./",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@apis/*": [
+        "src/apis/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@configs/*": [
+        "src/configs/*"
+      ],
+      "@lib/*": [
+        "src/lib/*"
+      ],
+      "@utils/*": [
+        "src/utils/*"
+      ],
+      "@views/*": [
+        "src/views/*"
+      ],
+    }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

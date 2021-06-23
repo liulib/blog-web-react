@@ -1,26 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Spin } from 'antd';
+import { layoutRouteList } from '@/router/index';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import { IRoute } from '@/router/routers';
+
+const App = () => {
+    return (
+        <Suspense fallback={<Spin size="large" className="layout__loading" />}>
+            <Router>
+                <Switch>
+                    {layoutRouteList.map((route: IRoute) => (
+                        <Route
+                            key={route.path}
+                            path={route.path}
+                            component={route.component}
+                        ></Route>
+                    ))}
+                </Switch>
+            </Router>
+        </Suspense>
+    );
+};
 
 export default App;
